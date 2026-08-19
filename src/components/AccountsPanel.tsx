@@ -1,4 +1,4 @@
-import { BANKS, CARDS, EMONEY, START_DATE } from '../accounts.ts'
+import { BANKS, CARDS, CASH, EMONEY, START_DATE } from '../accounts.ts'
 import { accountBalance, cashTotal } from '../lib/balances.ts'
 import { yen } from '../lib/format.ts'
 import type { Ledger } from '../types.ts'
@@ -68,12 +68,13 @@ export default function AccountsPanel({ ledger, onOpening }: Props) {
       <div className="stats">
         <div className="stat">
           <b>¥{yen(cash)}</b>
-          <span>口座残高合計（銀行＋電子マネー）</span>
+          <span>口座残高合計（現金＋銀行＋電子マネー）</span>
         </div>
       </div>
       <p className="muted">
         開始日は 2026年8月20日。カード利用では残高は変わりません。SUICAチャージはビューカード利用、PayPayチャージはSMBCから振替、楽天Payチャージは楽天カード利用です。
       </p>
+      <Group title="現金" ids={CASH} ledger={ledger} onOpening={onOpening} />
       <Group title="銀行口座" ids={BANKS} ledger={ledger} onOpening={onOpening} />
       <Group title="電子マネー" ids={EMONEY} ledger={ledger} onOpening={onOpening} />
       <Group title="クレジットカード（未払い）" ids={CARDS} ledger={ledger} onOpening={onOpening} card />

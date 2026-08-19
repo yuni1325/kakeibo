@@ -1,4 +1,4 @@
-export type AccountType = 'bank' | 'emoney' | 'card'
+export type AccountType = 'cash' | 'bank' | 'emoney' | 'card'
 
 export type TxKind = 'in' | 'out' | 'transfer'
 

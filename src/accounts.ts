@@ -3,6 +3,7 @@ import type { Account } from './types.ts'
 export const START_DATE = '2026-08-20'
 
 export const ACCOUNTS: Account[] = [
+  { id: 'cash', name: '現金', type: 'cash' },
   { id: 'bank-mizuho', name: 'みずほ', type: 'bank' },
   { id: 'bank-smbc', name: 'SMBC', type: 'bank' },
   { id: 'bank-mufg', name: '三菱UFJ', type: 'bank' },
@@ -17,6 +18,7 @@ export const ACCOUNTS: Account[] = [
 ]
 
 export const OPENING_BALANCES: Record<string, number> = {
+  cash: 50000,
   'bank-mizuho': 318193,
   'bank-mufg': 195027,
   'bank-smbc': 14111,
@@ -30,6 +32,7 @@ export const OPENING_BALANCES: Record<string, number> = {
   'card-view': 0,
 }
 
+export const CASH = ACCOUNTS.filter((a) => a.type === 'cash')
 export const BANKS = ACCOUNTS.filter((a) => a.type === 'bank')
 export const EMONEY = ACCOUNTS.filter((a) => a.type === 'emoney')
 export const CARDS = ACCOUNTS.filter((a) => a.type === 'card')
@@ -70,5 +73,5 @@ export function accountById(id: string): Account | undefined {
 
 export function isCashAccount(id: string): boolean {
   const t = accountById(id)?.type
-  return t === 'bank' || t === 'emoney'
+  return t === 'cash' || t === 'bank' || t === 'emoney'
 }
