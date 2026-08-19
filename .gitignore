@@ -9,6 +9,7 @@ dist
 dist-ssr
 *.local
 tmp-csv
+src/seed.json
 .vscode/*
 !.vscode/extensions.json
 .idea
